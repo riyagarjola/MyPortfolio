@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riya Garjola — Software Engineer</title>
+<meta name="description" content="Riya Garjola — Software Engineer, B.Tech CSE @ Graphic Era Hill University. Portfolio of projects, research and achievements.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#0B0F19;
+    --bg-1:#111827;
+    --card:#1F2937;
+    --card-border:#28303f;
+    --accent:#6366F1;
+    --accent-2:#3B82F6;
+    --text-0:#F9FAFB;
+    --text-1:#9CA3AF;
+    --text-2:#6B7280;
+    --ok:#34D399;
+    --radius:14px;
+    --maxw:1160px;
+    --shadow: 0 1px 0 rgba(255,255,255,0.02) inset, 0 20px 40px -20px rgba(0,0,0,0.5);
+  }
+  html[data-theme="light"]{
+    --bg-0:#F7F8FA;
+    --bg-1:#FFFFFF;
+    --card:#FFFFFF;
+    --card-border:#E5E7EB;
+    --text-0:#0B0F19;
+    --text-1:#4B5563;
+    --text-2:#9CA3AF;
+    --shadow: 0 1px 0 rgba(0,0,0,0.02) inset, 0 20px 40px -24px rgba(15,23,42,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-0);
+    color:var(--text-0);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    transition:background .3s ease,color .3s ease;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .display{font-family:'Space Grotesk',sans-serif;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  section{padding:120px 0;position:relative;}
+  @media(max-width:768px){section{padding:80px 0;}}
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent-2);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:'';width:22px;height:1px;background:var(--accent-2);}
+  h2.section-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(28px,4vw,42px);
+    font-weight:600;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .section-sub{color:var(--text-1);font-size:16px;max-width:560px;line-height:1.6;margin-bottom:56px;}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(11,15,25,0.72);
+    backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    transition:background .3s ease,border-color .3s ease;
+  }
+  html[data-theme="light"] header{background:rgba(255,255,255,0.78);border-bottom:1px solid #ECEEF1;}
+  .navbar{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .logo{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;}
+  .logo .dot{width:7px;height:7px;border-radius:2px;background:var(--accent);display:inline-block;transform:rotate(45deg);}
+  nav.links{display:flex;gap:2px;position:relative;}
+  nav.links a{
+    font-size:13.5px;padding:8px 14px;border-radius:8px;color:var(--text-1);
+    position:relative;white-space:nowrap;transition:color .2s ease;
+  }
+  nav.links a.active{color:var(--text-0);}
+  nav.links a.active::after{
+    content:'';position:absolute;bottom:1px;left:14px;right:14px;height:2px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:2px;
+  }
+  .nav-right{display:flex;align-items:center;gap:10px;}
+  .icon-btn{
+    width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+    border-radius:8px;border:1px solid var(--card-border);background:transparent;cursor:pointer;color:var(--text-1);
+    transition:.2s ease;
+  }
+  .icon-btn:hover{color:var(--text-0);border-color:var(--accent);}
+  .burger{display:none;}
+  .mobile-nav{display:none;}
+  @media(max-width:900px){
+    nav.links{display:none;}
+    .burger{display:flex;}
+    .mobile-nav.open{display:flex;}
+    .mobile-nav{
+      position:fixed;top:68px;left:0;right:0;bottom:0;background:var(--bg-0);z-index:99;
+      flex-direction:column;padding:20px 28px;gap:4px;overflow-y:auto;
+    }
+    .mobile-nav a{padding:14px 6px;font-size:16px;color:var(--text-1);border-bottom:1px solid var(--card-border);}
+    .mobile-nav a.active{color:var(--accent-2);}
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Inter',sans-serif;font-size:14px;font-weight:600;
+    padding:12px 20px;border-radius:9px;cursor:pointer;border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(99,102,241,0.55);}
+  .btn-outline{border-color:var(--card-border);color:var(--text-0);background:transparent;}
+  .btn-outline:hover{border-color:var(--accent-2);transform:translateY(-1px);}
+  .btn-ghost{color:var(--text-1);background:transparent;}
+  .btn-ghost:hover{color:var(--text-0);}
+  .btn-sm{padding:8px 14px;font-size:13px;}
+
+  /* ---------- Hero ---------- */
+  #home{padding-top:190px;padding-bottom:110px;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:48px;}}
+  .hero-kicker{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent-2);letter-spacing:.08em;margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+  .hero-kicker .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);position:relative;}
+  .hero-kicker .pulse::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--ok);animation:pulse 2s infinite;}
+  @keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.4);opacity:0}}
+  .hero h1{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(38px,6vw,64px);line-height:1.04;letter-spacing:-0.02em;margin:0 0 20px;
+  }
+  .hero h1 .accent-text{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero-role-line{height:30px;display:flex;align-items:center;margin-bottom:26px;}
+  .hero-role{font-family:'JetBrains Mono',monospace;font-size:17px;color:var(--text-1);}
+  .hero-role .cursor{display:inline-block;width:9px;height:20px;background:var(--accent-2);margin-left:3px;animation:blink 1s step-end infinite;vertical-align:-4px;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero p.desc{color:var(--text-1);font-size:16.5px;line-height:1.75;max-width:520px;margin-bottom:34px;}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;}
+  .hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
+  .hero-stat b{font-family:'Space Grotesk',sans-serif;font-size:22px;display:block;}
+  .hero-stat span{color:var(--text-2);font-size:12.5px;font-family:'JetBrains Mono',monospace;}
+
+  /* terminal card - signature element */
+  .terminal{
+    background:var(--card);border:1px solid var(--card-border);border-radius:16px;
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  .term-bar{display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid var(--card-border);}
+  .term-bar span{width:10px;height:10px;border-radius:50%;}
+  .term-bar .r{background:#EF4444;}.term-bar .y{background:#F59E0B;}.term-bar .g{background:#10B981;}
+  .term-title{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-2);}
+  .term-body{padding:22px 20px;font-family:'JetBrains Mono',monospace;font-size:13.2px;line-height:1.95;color:var(--text-1);}
+  .term-body .p{color:var(--ok);}
+  .term-body .cmd{color:var(--text-0);}
+  .term-body .key{color:var(--accent-2);}
+  .term-body .val{color:var(--text-0);}
+  .code-body{white-space:pre;}
+  .code-body .kw{color:var(--accent-2);}
+  .code-body .fn{color:var(--accent);}
+  .code-body .cm{color:var(--text-2);font-style:italic;}
+
+  /* intro card (hero, professional variant) */
+  .intro-card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:16px;
+    box-shadow:var(--shadow);padding:30px 28px;
+  }
+  .intro-top{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+  .intro-avatar{
+    width:52px;height:52px;border-radius:14px;flex-shrink:0;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .intro-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;letter-spacing:-0.01em;}
+  .intro-role{color:var(--accent-2);font-size:13.5px;font-weight:500;margin-top:2px;}
+  .intro-divider{height:1px;background:var(--card-border);margin:18px 0;}
+  .intro-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:9px 0;font-size:14px;}
+  .intro-row span{color:var(--text-2);}
+  .intro-row b{font-weight:600;color:var(--text-0);text-align:right;}
+  .intro-status{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--text-1);font-weight:500;}
+  .pulse-sm{width:7px;height:7px;border-radius:50%;background:var(--ok);position:relative;flex-shrink:0;}
+  .pulse-sm::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--ok);animation:pulse 2s infinite;}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;}
+  @media(max-width:900px){.about-grid{grid-template-columns:1fr;}}
+  .photo-frame{
+    aspect-ratio:4/5;border-radius:16px;border:1px solid var(--card-border);background:var(--card);
+    display:flex;align-items:center;justify-content:center;color:var(--text-2);position:relative;overflow:hidden;
+  }
+  .photo-frame .grid-pattern{position:absolute;inset:0;opacity:.5;
+    background-image:linear-gradient(var(--card-border) 1px, transparent 1px), linear-gradient(90deg, var(--card-border) 1px, transparent 1px);
+    background-size:24px 24px;}
+  .photo-frame .ph-label{position:relative;z-index:1;font-family:'JetBrains Mono',monospace;font-size:12.5px;text-align:center;padding:0 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;}
+  .photo-frame .photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;}
+  .about-text p{color:var(--text-1);line-height:1.85;font-size:15.5px;margin-bottom:16px;}
+  .timeline{margin-top:38px;border-left:2px solid var(--card-border);padding-left:26px;display:flex;flex-direction:column;gap:28px;}
+  .t-item{position:relative;}
+  .t-item::before{content:'';position:absolute;left:-32px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--bg-0);border:2px solid var(--accent-2);}
+  .t-item.now::before{background:var(--accent-2);}
+  .t-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent-2);margin-bottom:4px;}
+  .t-title{font-weight:600;font-size:15.5px;margin-bottom:3px;}
+  .t-sub{color:var(--text-1);font-size:14px;}
+
+  /* ---------- Skills ---------- */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;}
+  .skill-card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);
+    padding:24px;transition:.25s ease;
+  }
+  .skill-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .skill-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .skill-icon{width:38px;height:38px;border-radius:9px;background:rgba(99,102,241,0.12);display:flex;align-items:center;justify-content:center;color:var(--accent-2);flex-shrink:0;}
+  .skill-title{font-weight:600;font-size:15px;font-family:'Space Grotesk',sans-serif;}
+  .chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-family:'JetBrains Mono',monospace;font-size:12px;padding:6px 10px;border-radius:7px;
+    background:var(--bg-1);border:1px solid var(--card-border);color:var(--text-1);
+  }
+
+  /* ---------- Projects ---------- */
+  .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;}
+  .p-card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;transition:.3s ease;cursor:pointer;
+  }
+  .p-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow);}
+  .p-thumb{
+    height:150px;position:relative;display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(99,102,241,0.25), transparent 55%),
+      radial-gradient(circle at 80% 80%, rgba(59,130,246,0.2), transparent 55%),
+      var(--bg-1);
+    border-bottom:1px solid var(--card-border);
+  }
+  .p-thumb .p-mono{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-2);}
+  .p-status{position:absolute;top:12px;right:12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:4px 9px;border-radius:20px;background:rgba(52,211,153,0.12);color:var(--ok);border:1px solid rgba(52,211,153,0.3);}
+  .p-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;}
+  .p-date{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-2);margin-bottom:8px;}
+  .p-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin-bottom:8px;}
+  .p-desc{color:var(--text-1);font-size:14px;line-height:1.65;margin-bottom:16px;flex:1;}
+  .p-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+  .p-actions{display:flex;gap:10px;}
+
+  /* project detail overlay */
+  .overlay{
+    position:fixed;inset:0;background:rgba(5,7,12,0.7);backdrop-filter:blur(6px);
+    z-index:200;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;
+  }
+  .overlay.open{display:flex;}
+  .detail-card{
+    background:var(--bg-1);border:1px solid var(--card-border);border-radius:20px;max-width:820px;width:100%;
+    margin-top:20px;box-shadow:0 40px 80px -30px rgba(0,0,0,0.6);
+  }
+  .detail-head{padding:32px 36px;border-bottom:1px solid var(--card-border);display:flex;justify-content:space-between;align-items:flex-start;gap:20px;}
+  .detail-close{cursor:pointer;color:var(--text-1);border:1px solid var(--card-border);border-radius:8px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .detail-close:hover{color:var(--text-0);border-color:var(--accent);}
+  .detail-body{padding:32px 36px;}
+  .detail-sec{margin-bottom:30px;}
+  .detail-sec h4{font-family:'Space Grotesk',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-2);margin:0 0 14px;}
+  .detail-sec p{color:var(--text-1);line-height:1.8;font-size:15px;margin:0;}
+  .check-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  @media(max-width:600px){.check-list{grid-template-columns:1fr;}}
+  .check-list li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-1);background:var(--card);border:1px solid var(--card-border);border-radius:9px;padding:11px 13px;}
+  .check-list li svg{flex-shrink:0;margin-top:1px;color:var(--ok);}
+
+  /* ---------- Research ---------- */
+  .research-grid{display:flex;flex-direction:column;gap:18px;}
+  .r-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:28px;}
+  .r-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:12px;}
+  .r-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;max-width:600px;}
+  .r-tag{font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 10px;border-radius:20px;background:rgba(59,130,246,0.12);color:var(--accent-2);border:1px solid rgba(59,130,246,0.25);white-space:nowrap;height:fit-content;}
+  .r-meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--text-2);font-size:12.5px;font-family:'JetBrains Mono',monospace;margin-bottom:14px;}
+  .r-desc{color:var(--text-1);font-size:14.5px;line-height:1.75;margin-bottom:18px;}
+
+  /* ---------- Certifications / Achievements ---------- */
+  .cert-grid,.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+  .cert-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:14px;}
+  .cert-logo{width:44px;height:44px;border-radius:10px;background:rgba(99,102,241,0.12);display:flex;align-items:center;justify-content:center;color:var(--accent-2);font-weight:700;font-family:'Space Grotesk',sans-serif;}
+  .cert-name{font-weight:600;font-size:15.5px;}
+  .cert-provider{color:var(--text-1);font-size:13.5px;}
+  .cert-date{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-2);}
+  .cert-note{color:var(--text-1);font-size:13.5px;line-height:1.6;}
+
+  .ach-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:24px;transition:.25s ease;}
+  .ach-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .ach-icon{width:40px;height:40px;border-radius:9px;background:rgba(52,211,153,0.12);color:var(--ok);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .ach-title{font-weight:600;font-size:15.5px;margin-bottom:6px;}
+  .ach-desc{color:var(--text-1);font-size:13.8px;line-height:1.65;margin-bottom:14px;}
+  .ach-date{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-2);}
+
+  /* ---------- Coding profiles ---------- */
+  .profiles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;}
+  .profile-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:24px;text-align:center;transition:.25s ease;}
+  .profile-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .profile-card.placeholder{opacity:.55;border-style:dashed;}
+  .profile-icon{width:46px;height:46px;border-radius:12px;background:var(--bg-1);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;color:var(--accent-2);}
+  .profile-name{font-weight:600;font-size:15px;margin-bottom:4px;}
+  .profile-user{color:var(--text-1);font-family:'JetBrains Mono',monospace;font-size:12.5px;margin-bottom:16px;}
+
+  /* ---------- Resume ---------- */
+  .resume-box{background:var(--card);border:1px solid var(--card-border);border-radius:18px;padding:0;overflow:hidden;display:grid;grid-template-columns:1fr 340px;}
+  @media(max-width:800px){.resume-box{grid-template-columns:1fr;}}
+  .resume-preview{background:var(--bg-1);min-height:460px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+  .resume-ph{display:flex;flex-direction:column;align-items:center;gap:14px;color:var(--text-2);font-family:'JetBrains Mono',monospace;font-size:12.5px;text-align:center;padding:30px;max-width:280px;}
+  .resume-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:2;background:var(--bg-1);}
+  .resume-side{padding:34px;display:flex;flex-direction:column;gap:16px;border-left:1px solid var(--card-border);}
+  @media(max-width:800px){.resume-side{border-left:none;border-top:1px solid var(--card-border);}}
+  .resume-side h3{font-family:'Space Grotesk',sans-serif;margin:0;font-size:20px;}
+  .resume-side p{color:var(--text-1);font-size:14px;line-height:1.7;margin:0;}
+  .resume-meta{display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--text-1);font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+  .form-row{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+  .form-row label{font-size:12.5px;font-family:'JetBrains Mono',monospace;color:var(--text-1);}
+  .form-row input,.form-row textarea{
+    background:var(--bg-1);border:1px solid var(--card-border);border-radius:9px;padding:13px 14px;
+    color:var(--text-0);font-family:'Inter',sans-serif;font-size:14.5px;outline:none;transition:border-color .2s ease;
+  }
+  .form-row input:focus,.form-row textarea:focus{border-color:var(--accent-2);}
+  .form-row .err{color:#F87171;font-size:12px;display:none;}
+  .form-row.invalid input,.form-row.invalid textarea{border-color:#F87171;}
+  .form-row.invalid .err{display:block;}
+  .contact-info-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:24px;}
+  .contact-info-icon{width:38px;height:38px;border-radius:9px;background:var(--card);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;color:var(--accent-2);flex-shrink:0;}
+  .contact-info-label{font-size:12px;color:var(--text-2);font-family:'JetBrains Mono',monospace;margin-bottom:2px;}
+  .contact-info-value{font-size:14.5px;font-weight:500;}
+  .toast{
+    position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--card);border:1px solid var(--ok);color:var(--text-0);padding:14px 22px;border-radius:10px;
+    font-size:13.5px;opacity:0;pointer-events:none;transition:.3s ease;z-index:300;box-shadow:var(--shadow);
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--card-border);padding:44px 0;}
+  .footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+  .footer-links a{color:var(--text-1);font-size:13.5px;}
+  .footer-links a:hover{color:var(--text-0);}
+  .footer-social{display:flex;gap:10px;}
+  .footer-copy{color:var(--text-2);font-size:12.5px;font-family:'JetBrains Mono',monospace;}
+  #toTop{position:fixed;bottom:28px;right:28px;z-index:90;width:44px;height:44px;border-radius:12px;background:var(--card);border:1px solid var(--card-border);color:var(--text-1);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:.3s ease;}
+  #toTop.show{opacity:1;pointer-events:auto;}
+  #toTop:hover{border-color:var(--accent);color:var(--text-0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap navbar">
+    <a href="#home" class="logo"><span class="dot"></span>Riya Garjola</a>
+    <nav class="links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#profiles">Profiles</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeToggle" title="Toggle theme">
+        <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="icon-btn burger" id="burgerBtn" title="Menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+    <a href="#projects">Projects</a><a href="#research">Research</a>
+    <a href="#certifications">Certifications</a><a href="#achievements">Achievements</a>
+    <a href="#profiles">Coding Profiles</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+  </div>
+</header>
+
+<!-- HOME -->
+<section id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-kicker"><span class="pulse"></span>OPEN TO SOFTWARE ENGINEERING ROLES</div>
+      <h1>Hi, I'm Riya Garjola —<br><span class="accent-text">building software</span> that solves real problems.</h1>
+      <div class="hero-role-line">
+        <span class="hero-role mono" id="typedRole">Software Engineer</span><span class="cursor"></span>
+      </div>
+      <p class="desc">B.Tech Computer Science student at Graphic Era Hill University (CGPA 8.9/10), focused on data structures &amp; algorithms, full-stack development, and applied AI — with published research on GAN training and NLP text classification.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://drive.google.com/file/d/10DyuNDQdY9Vrs8qB6ttbjfZD37MAYZHD/view?usp=sharing" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+        <a class="btn btn-outline" href="#projects">View Projects</a>
+        <a class="btn btn-ghost" href="#contact">Contact Me →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>8.9<span style="font-size:14px;color:var(--text-2);">/10</span></b><span>CGPA</span></div>
+        <div class="hero-stat"><b>5</b><span>SHIPPED PROJECTS</span></div>
+        <div class="hero-stat"><b>2</b><span>RESEARCH PAPERS</span></div>
+        <div class="hero-stat"><b>2</b><span>INDUSTRY CERTS</span></div>
+      </div>
+    </div>
+    <div class="intro-card reveal">
+      <div class="intro-top">
+        <div class="intro-avatar">RG</div>
+        <div>
+          <div class="intro-name">Riya Garjola</div>
+          <div class="intro-role">Software Engineer</div>
+        </div>
+      </div>
+      <div class="intro-divider"></div>
+      <div class="intro-row"><span>University</span><b>Graphic Era Hill University</b></div>
+      <div class="intro-row"><span>CGPA</span><b>8.9 / 10</b></div>
+      <div class="intro-row"><span>Focus Areas</span><b>DSA · Full-Stack · GANs · NLP</b></div>
+      <div class="intro-row"><span>Research Papers</span><b>2 Published</b></div>
+      <div class="intro-row"><span>Projects</span><b>5 Completed</b></div>
+      <div class="intro-divider"></div>
+      <div class="intro-status"><span class="pulse-sm"></span>Open to Software Engineering roles</div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="photo-frame">
+          <div class="grid-pattern"></div>
+          <div class="ph-label">Professional photograph<br>placeholder — drop <span class="mono" style="color:var(--accent-2);">assets/pic.jpg</span> next to index.html</div>
+          <img src="assets/pic.jpg" alt="Riya Garjola" class="photo-img" onerror="this.style.display='none';">
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="eyebrow">About</div>
+        <h2 class="section-title">I don't just build software — I can explain, defend, and publish why it works.</h2>
+        <div class="about-text">
+          <p>I'm a Computer Science undergraduate at Graphic Era Hill University, currently maintaining an 8.9/10 CGPA. My work sits at the intersection of solid software engineering fundamentals — data structures, operating systems, databases — and applied AI, where I've published research on generative adversarial network training and NLP-based text classification.</p>
+          <p>Outside coursework, I mentor learners in cloud architecture as a Google Cloud Arcade Mentor, and was selected as a SheFi Scholar in 2025 for excellence in technology and leadership. I care about building things that measurably work: faster search, higher model accuracy, lower latency — not just demos.</p>
+        </div>
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-date">MAR 2022 – MAR 2023</div>
+            <div class="t-title">Intermediate</div>
+            <div class="t-sub">Doon Modern Senior Secondary School, Uttarakhand</div>
+          </div>
+          <div class="t-item now">
+            <div class="t-date">AUG 2023 – JUN 2027</div>
+            <div class="t-title">B.Tech, Computer Science &amp; Engineering</div>
+            <div class="t-sub">Graphic Era Hill University · CGPA 8.9/10</div>
+          </div>
+          <div class="t-item now">
+            <div class="t-date">2025 — PRESENT</div>
+            <div class="t-title">Building &amp; publishing</div>
+            <div class="t-sub">Full-stack projects, IEEE research, cloud mentoring</div>
+          </div>
+          <div class="t-item">
+            <div class="t-date">GOAL</div>
+            <div class="t-title">Software Engineering role</div>
+            <div class="t-sub">Contributing to high-scale, well-engineered products</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow reveal">Skills</div>
+    <h2 class="section-title reveal">Technical toolkit</h2>
+    <p class="section-sub reveal">Grouped the way I actually use them — from core languages to CS fundamentals.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="skill-title">Programming Languages</div></div>
+        <div class="chip-row"><span class="chip">C</span><span class="chip">C++</span><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 22h8M12 18v4"/></svg></div><div class="skill-title">Frontend</div></div>
+        <div class="chip-row"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Tailwind CSS</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17V7a2 2 0 0 1 2-2h6l2 2h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/></svg></div><div class="skill-title">Databases</div></div>
+        <div class="chip-row"><span class="chip">MySQL</span><span class="chip">Database Fundamentals</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div><div class="skill-title">Cloud</div></div>
+        <div class="chip-row"><span class="chip">AWS EC2</span><span class="chip">AWS S3</span><span class="chip">AWS IAM</span><span class="chip">Google Cloud (Arcade)</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="skill-title">Operating Systems</div></div>
+        <div class="chip-row"><span class="chip">Linux</span><span class="chip">Process &amp; Memory Mgmt</span><span class="chip">OS Fundamentals</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12h4M18 12h4M12 2v4M12 18v4"/></svg></div><div class="skill-title">Networking</div></div>
+        <div class="chip-row"><span class="chip">Computer Networks</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="skill-title">Developer Tools</div></div>
+        <div class="chip-row"><span class="chip">Git &amp; GitHub</span><span class="chip">VS Code</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div><div class="skill-title">Core CS Subjects</div></div>
+        <div class="chip-row"><span class="chip">Data Structures &amp; Algorithms</span><span class="chip">OOP</span><span class="chip">Operating Systems</span><span class="chip">Computer Networks</span><span class="chip">Software Engineering</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow reveal">Projects</div>
+    <h2 class="section-title reveal">Things I've built</h2>
+    <p class="section-sub reveal">Each card opens into the full case study — problem, solution, stack, and results.</p>
+    <div class="project-grid">
+
+      <div class="p-card reveal" onclick="openProject('reunionhub')">
+        <div class="p-thumb"><span class="p-status">Completed</span><span class="p-mono">JS · React · Tailwind</span></div>
+        <div class="p-body">
+          <div class="p-date">Aug 2025</div>
+          <div class="p-title">ReunionHub</div>
+          <div class="p-desc">Centralized networking platform with AI-powered mentor–mentee matching, built following the full SDLC with a cross-functional team.</div>
+          <div class="p-stack"><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Tailwind CSS</span></div>
+          <div class="p-actions">
+            <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); openProject('reunionhub')">View Details</button>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/riyagarjola/ReunionHub_Project.git" target="_blank" rel="noopener" onclick="event.stopPropagation()">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-card reveal" onclick="openProject('jobportal')">
+        <div class="p-thumb"><span class="p-status">Completed</span><span class="p-mono">HTML · CSS · JS · MySQL</span></div>
+        <div class="p-body">
+          <div class="p-date">Nov 2025</div>
+          <div class="p-title">Blue-Collar Job Portal</div>
+          <div class="p-desc">A software application connecting blue-collar workers to jobs, built with Agile methodology and iterative user feedback.</div>
+          <div class="p-stack"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">MySQL</span></div>
+          <div class="p-actions">
+            <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); openProject('jobportal')">View Details</button>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/riyagarjola/Job_Portal.git" target="_blank" rel="noopener" onclick="event.stopPropagation()">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-card reveal" onclick="openProject('digits')">
+        <div class="p-thumb"><span class="p-status">Completed</span><span class="p-mono">Python · OpenCV</span></div>
+        <div class="p-body">
+          <div class="p-date">Feb 2025</div>
+          <div class="p-title">Handwritten Digit Recognition for Attendance</div>
+          <div class="p-desc">A digit classifier reaching 95.8% accuracy on MNIST, wrapped in a GUI-based attendance system.</div>
+          <div class="p-stack"><span class="chip">Python</span><span class="chip">OpenCV</span><span class="chip">NumPy</span><span class="chip">Tkinter</span></div>
+          <div class="p-actions">
+            <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); openProject('digits')">View Details</button>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/riyagarjola/Handwritten_Digit_Recognization.git" target="_blank" rel="noopener" onclick="event.stopPropagation()">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-card reveal" onclick="openProject('syntaxchecker')">
+        <div class="p-thumb"><span class="p-status">Completed</span><span class="p-mono">C</span></div>
+        <div class="p-body">
+          <div class="p-date">Personal Project</div>
+          <div class="p-title">C Syntax Checker</div>
+          <div class="p-desc">A tool for parsing and validating C source code syntax — built to deepen understanding of compiler front-end concepts.</div>
+          <div class="p-stack"><span class="chip">C</span></div>
+          <div class="p-actions">
+            <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); openProject('syntaxchecker')">View Details</button>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/riyagarjola/C-syntax-checker" target="_blank" rel="noopener" onclick="event.stopPropagation()">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-card reveal" onclick="openProject('memalloc')">
+        <div class="p-thumb"><span class="p-status">Completed</span><span class="p-mono">C · OS</span></div>
+        <div class="p-body">
+          <div class="p-date">PBL — Operating Systems</div>
+          <div class="p-title">Memory Allocator (PBL Operating System)</div>
+          <div class="p-desc">Project-based learning implementation of a custom memory allocator, exploring low-level memory management in an OS context.</div>
+          <div class="p-stack"><span class="chip">C</span><span class="chip">Operating Systems</span></div>
+          <div class="p-actions">
+            <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); openProject('memalloc')">View Details</button>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/riyagarjola/PBL-Operating-System" target="_blank" rel="noopener" onclick="event.stopPropagation()">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT DETAIL OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeOverlayBg(event)">
+  <div class="detail-card" id="detailCard"></div>
+</div>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="wrap">
+    <div class="eyebrow reveal">Research</div>
+    <h2 class="section-title reveal">Published work</h2>
+    <p class="section-sub reveal">IEEE-affiliated research spanning generative models and NLP.</p>
+    <div class="research-grid">
+      <div class="r-card reveal">
+        <div class="r-top">
+          <div class="r-title">Design and Training of GANs: A Case Study on Digit Generation</div>
+          <span class="r-tag">Generative AI</span>
+        </div>
+        <div class="r-meta"><span>Authors: Garjola, Birkhani</span><span>Publisher: Semantic Scholar</span></div>
+        <div class="r-desc">Focused on model architecture, training stability, and performance optimization to improve generation quality in GANs.</div>
+        <a class="btn btn-outline btn-sm" href="https://www.semanticscholar.org/paper/Design-and-Training-of-GANs%3A-A-Case-Study-on-Digit-Garjola-Birkhani/35486521ece24a1e5e0f946ac3ff76ceecfdca42" target="_blank" rel="noopener">Read Paper →</a>
+      </div>
+      <div class="r-card reveal">
+        <div class="r-top">
+          <div class="r-title">An Efficient NLP Framework for Text Categorization Using Tf-Idf and ECOC</div>
+          <span class="r-tag">NLP</span>
+        </div>
+        <div class="r-meta"><span>Author: Garjola</span><span>Publisher: ResearchGate</span></div>
+        <div class="r-desc">Text categorization framework combining Tf-Idf feature representation with Error-Correcting Output Codes (ECOC) classification.</div>
+        <a class="btn btn-outline btn-sm" href="https://www.researchgate.net/publication/395211034_An_Efficient_Nlp_Framework_for_Text_Categorization_Using_Tf-Idf_and_Ecoc" target="_blank" rel="noopener">Read Paper →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="wrap">
+    <div class="eyebrow reveal">Certifications</div>
+    <h2 class="section-title reveal">Courses &amp; certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <div class="cert-logo">AWS</div>
+        <div><div class="cert-name">AWS Cloud Quest</div><div class="cert-provider">Amazon Web Services</div></div>
+        <div class="cert-date">Oct 2025</div>
+        <div class="cert-note">Gained experience with EC2, S3, IAM and demonstrated cloud computing fundamentals.</div>
+        <a class="btn btn-outline btn-sm" href="https://drive.google.com/file/d/1uWhHQRSJmOQm5ZnWXDjqkQnFfC95Hb0I/view?usp=drivesdk" target="_blank" rel="noopener">View Credential →</a>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-logo">JPM</div>
+        <div><div class="cert-name">Software Development</div><div class="cert-provider">JPMorgan Chase &amp; Co.</div></div>
+        <div class="cert-date">Oct 2025</div>
+        <div class="cert-note">Applied software engineering principles, agile methods, and real-world workflows.</div>
+        <a class="btn btn-outline btn-sm" href="https://drive.google.com/file/d/1ufwkWgLb4R16oVPrjHHiLR7tdhY1pH-d/view?usp=drivesdk" target="_blank" rel="noopener">View Credential →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="wrap">
+    <div class="eyebrow reveal">Achievements</div>
+    <h2 class="section-title reveal">Recognition &amp; leadership</h2>
+    <div class="ach-grid">
+      <div class="ach-card reveal">
+        <div class="ach-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg></div>
+        <div class="ach-title">SheFi Scholar</div>
+        <div class="ach-desc">Selected among global scholars for excellence in technology and leadership.</div>
+        <div class="ach-date">2025</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="ach-title">Google Cloud Arcade Mentor</div>
+        <div class="ach-desc">Guided 50+ learners in cloud architecture, data analytics, and DevOps.</div>
+        <div class="ach-date">2025</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+        <div class="ach-title">IEEE Research Papers</div>
+        <div class="ach-desc">Published research on Design and Training of GANs — model architecture, training stability, and performance optimization.</div>
+        <div class="ach-date">2025</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="ach-title">NSS Volunteer</div>
+        <div class="ach-desc">Led initiatives promoting digital inclusion and collaboration.</div>
+        <div class="ach-date">Ongoing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CODING PROFILES -->
+<section id="profiles">
+  <div class="wrap">
+    <div class="eyebrow reveal">Coding Profiles</div>
+    <h2 class="section-title reveal">Find me online</h2>
+    <div class="profiles-grid">
+      <div class="profile-card reveal">
+        <div class="profile-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.02c-3.34.72-4.04-1.6-4.04-1.6-.55-1.38-1.34-1.75-1.34-1.75-1.1-.75.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.08 1.84 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></div>
+        <div class="profile-name">GitHub</div>
+        <div class="profile-user">@riyagarjola</div>
+        <a class="btn btn-outline btn-sm" href="https://github.com/riyagarjola" target="_blank" rel="noopener">Visit Profile</a>
+      </div>
+      <div class="profile-card reveal">
+        <div class="profile-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.26 2.37 4.26 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></div>
+        <div class="profile-name">LinkedIn</div>
+        <div class="profile-user">riya-garjola</div>
+        <a class="btn btn-outline btn-sm" href="https://www.linkedin.com/in/riya-garjola-45005032b/" target="_blank" rel="noopener">Visit Profile</a>
+      </div>
+      <div class="profile-card reveal">
+        <div class="profile-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13.48 0a1.37 1.37 0 0 0-.99.42L2.71 10.24a3.94 3.94 0 0 0 0 5.5l4.34 4.42a3.94 3.94 0 0 0 5.5 0l2.4-2.4a1.37 1.37 0 0 0-1.94-1.94l-2.4 2.4a1.2 1.2 0 0 1-1.7 0l-4.33-4.42a1.2 1.2 0 0 1 0-1.68l9.78-9.82A1.37 1.37 0 0 0 13.48 0zm7.13 7.02a1.37 1.37 0 0 0-.97.4l-4.15 4.16a1.37 1.37 0 1 0 1.94 1.94l4.15-4.16a1.37 1.37 0 0 0-.97-2.34zM9.02 16.52a1.65 1.65 0 1 0 0 3.3 1.65 1.65 0 0 0 0-3.3z"/></svg></div>
+        <div class="profile-name">LeetCode</div>
+        <div class="profile-user">Garjola_Riya</div>
+        <a class="btn btn-outline btn-sm" href="https://leetcode.com/u/Garjola_Riya/" target="_blank" rel="noopener">Visit Profile</a>
+      </div>
+      <div class="profile-card reveal">
+        <div class="profile-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M9.06 8.9c-.4-.4-1.06-.4-1.46.02-.4.4-.4 1.05.02 1.44l1.72 1.65-1.72 1.65a1.03 1.03 0 0 0-.02 1.44c.4.4 1.05.4 1.46.02l2.52-2.4a1 1 0 0 0 0-1.42l-2.52-2.4zm9.62-3.87A9.96 9.96 0 0 0 12 2a9.96 9.96 0 0 0-6.68 2.58 1 1 0 0 0-.06 1.44 1.02 1.02 0 0 0 1.44.06A7.95 7.95 0 0 1 12 4a7.95 7.95 0 0 1 5.3 2.03 1.02 1.02 0 0 0 1.44-.06 1 1 0 0 0-.06-1.44zM12 20a7.95 7.95 0 0 1-5.3-2.03 1.02 1.02 0 0 0-1.44.06 1 1 0 0 0 .06 1.44A9.96 9.96 0 0 0 12 22a9.96 9.96 0 0 0 6.68-2.53 1 1 0 0 0 .06-1.44 1.02 1.02 0 0 0-1.44-.06A7.95 7.95 0 0 1 12 20zm7.68-8.63-2.5-2.4a1.03 1.03 0 0 0-1.46.02c-.39.4-.38 1.05.03 1.44l.9.86H14a1 1 0 1 0 0 2h2.65l-.9.86a1.03 1.03 0 0 0-.03 1.44c.4.4 1.06.4 1.46.02l2.5-2.4a1 1 0 0 0 0-1.44v-.4z"/></svg></div>
+        <div class="profile-name">GeeksforGeeks</div>
+        <div class="profile-user">riyagarq6a7</div>
+        <a class="btn btn-outline btn-sm" href="https://www.geeksforgeeks.org/profile/riyagarq6a7" target="_blank" rel="noopener">Visit Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="wrap">
+    <div class="eyebrow reveal">Resume</div>
+    <h2 class="section-title reveal">Full resume</h2>
+    <p class="section-sub reveal">Preview it below, or open the full resume.</p>
+    <div class="resume-box reveal">
+      <div class="resume-preview">
+        <div class="resume-ph">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Resume preview placeholder — drop <span class="mono" style="color:var(--accent-2);">assets/resume.jpg</span> next to index.html</span>
+        </div>
+        <img src="assets/resume.jpg" alt="Riya Garjola Resume" class="resume-img" onerror="this.style.display='none';">
+      </div>
+      <div class="resume-side">
+        <h3>Riya Garjola</h3>
+        <p>B.Tech CSE · Graphic Era Hill University<br>CGPA 8.9/10 · Class of 2027</p>
+        <div class="resume-meta">
+          <span>FORMAT: PDF</span>
+          <span>UPDATED: 2025</span>
+        </div>
+        <a class="btn btn-primary" href="https://drive.google.com/file/d/10DyuNDQdY9Vrs8qB6ttbjfZD37MAYZHD/view?usp=sharing" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow reveal">Contact</div>
+    <h2 class="section-title reveal">Let's work together</h2>
+    <p class="section-sub reveal">Have a role, project, or question in mind? Send a message — it opens directly in your email client.</p>
+    <div class="contact-grid">
+      <form id="contactForm" class="reveal" novalidate>
+        <div class="form-row" id="row-name">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name">
+          <span class="err">Please enter your name.</span>
+        </div>
+        <div class="form-row" id="row-email">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com">
+          <span class="err">Please enter a valid email.</span>
+        </div>
+        <div class="form-row" id="row-message">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="What would you like to talk about?"></textarea>
+          <span class="err">Please enter a message.</span>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+      <div class="reveal">
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg></div>
+          <div><div class="contact-info-label">EMAIL</div><a class="contact-info-value" href="mailto:riyagarjola0@gmail.com">riyagarjola0@gmail.com</a></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.02c-3.34.72-4.04-1.6-4.04-1.6-.55-1.38-1.34-1.75-1.34-1.75-1.1-.75.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.08 1.84 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></div>
+          <div><div class="contact-info-label">GITHUB</div><a class="contact-info-value" href="https://github.com/riyagarjola" target="_blank" rel="noopener">github.com/riyagarjola</a></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.26 2.37 4.26 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></div>
+          <div><div class="contact-info-label">LINKEDIN</div><a class="contact-info-value" href="https://www.linkedin.com/in/riya-garjola-45005032b/" target="_blank" rel="noopener">riya-garjola</a></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M13.48 0a1.37 1.37 0 0 0-.99.42L2.71 10.24a3.94 3.94 0 0 0 0 5.5l4.34 4.42a3.94 3.94 0 0 0 5.5 0l2.4-2.4a1.37 1.37 0 0 0-1.94-1.94l-2.4 2.4a1.2 1.2 0 0 1-1.7 0l-4.33-4.42a1.2 1.2 0 0 1 0-1.68l9.78-9.82A1.37 1.37 0 0 0 13.48 0z"/></svg></div>
+          <div><div class="contact-info-label">LEETCODE</div><a class="contact-info-value" href="https://leetcode.com/u/Garjola_Riya/" target="_blank" rel="noopener">Garjola_Riya</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-copy">© <span id="year"></span> Riya Garjola. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#home">Home</a><a href="#projects">Projects</a><a href="#research">Research</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a class="icon-btn" href="https://github.com/riyagarjola" target="_blank" rel="noopener" title="GitHub"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.02c-3.34.72-4.04-1.6-4.04-1.6-.55-1.38-1.34-1.75-1.34-1.75-1.1-.75.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.08 1.84 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+      <a class="icon-btn" href="https://www.linkedin.com/in/riya-garjola-45005032b/" target="_blank" rel="noopener" title="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.26 2.37 4.26 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+      <a class="icon-btn" href="mailto:riyagarjola0@gmail.com" title="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<div id="toTop" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- Theme toggle ---------- */
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  themeIcon.innerHTML = t === 'light'
+    ? '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
+    : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+}
+themeToggle.addEventListener('click', ()=>{
+  const cur = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  setTheme(cur);
+});
+setTheme('dark');
+
+/* ---------- Mobile nav ---------- */
+const burgerBtn = document.getElementById('burgerBtn');
+const mobileNav = document.getElementById('mobileNav');
+burgerBtn.addEventListener('click', ()=> mobileNav.classList.toggle('open'));
+document.querySelectorAll('.mobile-nav a').forEach(a=>a.addEventListener('click', ()=>mobileNav.classList.remove('open')));
+
+/* ---------- Active nav on scroll ---------- */
+const sections = document.querySelectorAll('section[id]');
+const navA = document.querySelectorAll('nav.links a, .mobile-nav a');
+function onScrollNav(){
+  let current = sections[0].id;
+  const y = window.scrollY + 120;
+  sections.forEach(s=>{ if(y >= s.offsetTop) current = s.id; });
+  navA.forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href') === '#'+current);
+  });
+  document.getElementById('toTop').classList.toggle('show', window.scrollY > 500);
+}
+window.addEventListener('scroll', onScrollNav);
+onScrollNav();
+
+/* ---------- Reveal on scroll ---------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- Typing effect ---------- */
+const roles = ['Software Engineer','Data Structures Enthusiast','Cloud Learner','AI Developer'];
+const typedEl = document.getElementById('typedRole');
+let ri=0, ci=0, deleting=false;
+function typeLoop(){
+  const word = roles[ri];
+  if(!deleting){
+    ci++;
+    typedEl.textContent = word.slice(0,ci);
+    if(ci === word.length){ deleting = true; setTimeout(typeLoop, 1400); return; }
+  } else {
+    ci--;
+    typedEl.textContent = word.slice(0,ci);
+    if(ci === 0){ deleting = false; ri = (ri+1) % roles.length; }
+  }
+  setTimeout(typeLoop, deleting ? 40 : 75);
+}
+typeLoop();
+
+/* ---------- Project detail data ---------- */
+const projects = {
+  reunionhub: {
+    name:'ReunionHub', stack:'JavaScript · React · Tailwind CSS', duration:'Aug 2025', status:'Completed',
+    github:'https://github.com/riyagarjola/ReunionHub_Project.git', demo:null,
+    problem:'Communities and alumni networks often lack a centralized platform to reconnect, mentor, and collaborate, leading to fragmented engagement across scattered social channels.',
+    solution:'A centralized networking platform built with React and Tailwind CSS, developed following the Software Development Life Cycle in collaboration with a cross-functional team, with AI-powered mentor–mentee matching based on user data and preference analysis.',
+    features:['Mentor–mentee matching','User profiles & preferences','Feature collaboration across SDLC stages','Optimized, low-latency codebase','Responsive UI','Cross-functional team workflow'],
+    stackList:['JavaScript','React','Tailwind CSS'],
+    challenges:'Matching mentors and mentees accurately required analyzing user data and preferences at scale while keeping the experience fast; this was addressed through code optimization that reduced system latency by 30%.',
+    metrics:[['+40%','User engagement'],['+35%','Match accuracy'],['-30%','System latency']],
+  },
+  jobportal: {
+    name:'Blue-Collar Job Portal', stack:'HTML · CSS · JavaScript · MySQL', duration:'Nov 2025', status:'Completed',
+    github:'https://github.com/riyagarjola/Job_Portal.git', demo:null,
+    problem:'Blue-collar workers often face inefficient, informal job-search channels, making it hard to find verified opportunities quickly, while employers struggle to filter and reach suitable candidates.',
+    solution:'A software application for a job portal built using Agile methodology, with iterative development cycles that incorporated ongoing user feedback to refine the search and hiring experience.',
+    features:['Job search','Filtering','Employer/candidate flow','Iterative Agile releases','Debugged, reliable backend','MySQL-backed data'],
+    stackList:['HTML','CSS','JavaScript','MySQL'],
+    challenges:'Search and filtering performance was a key technical challenge; performance optimization in the search and filtering algorithms reduced hiring time by 30%, and systematic debugging increased platform reliability by 25%.',
+    metrics:[['+45%','Job search efficiency'],['-30%','Hiring time'],['+25%','Platform reliability']],
+  },
+  digits: {
+    name:'Handwritten Digit Recognition for Attendance', stack:'Python · OpenCV · NumPy · Tkinter', duration:'Feb 2025', status:'Completed',
+    github:'https://github.com/riyagarjola/Handwritten_Digit_Recognization.git', demo:null,
+    problem:'Manual attendance tracking is slow and error-prone; a fast, accurate way to recognize handwritten digits (e.g. roll numbers) can streamline attendance capture.',
+    solution:'A digit classifier trained and evaluated on the MNIST dataset (10,000+ samples), with an efficient preprocessing and feature-extraction pipeline, wrapped in a Tkinter GUI for user-centric, real-world attendance use.',
+    features:['MNIST-based classifier','Optimized preprocessing pipeline','GUI-based interaction','Fast inference','User-centric design'],
+    stackList:['Python','OpenCV','NumPy','Tkinter'],
+    challenges:'Reducing inference time while preserving accuracy required an optimized preprocessing pipeline, which brought execution time down to 0.8 seconds per sample without sacrificing model performance.',
+    metrics:[['95.8%','Classification accuracy'],['0.8s','Execution time'],['+50%','Attendance processing efficiency']],
+  },
+  syntaxchecker: {
+    name:'C Syntax Checker', stack:'C', duration:'Personal Project', status:'Completed',
+    github:'https://github.com/riyagarjola/C-syntax-checker', demo:null,
+    problem:'Beginners writing C often lack fast, lightweight feedback on syntax errors before a full compiler run, slowing down the learn-by-doing cycle.',
+    solution:'A syntax-checking tool written in C that parses source code and flags syntax issues, built to deepen practical understanding of tokenizing and compiler front-end logic.',
+    features:['Source code parsing','Syntax validation','Written entirely in C'],
+    stackList:['C'],
+    challenges:'Details on specific implementation challenges are documented in the project repository.',
+    metrics:[],
+  },
+  memalloc: {
+    name:'Memory Allocator (PBL Operating System)', stack:'C · Operating Systems', duration:'Project-Based Learning', status:'Completed',
+    github:'https://github.com/riyagarjola/PBL-Operating-System', demo:null,
+    problem:'Understanding how operating systems manage memory requires hands-on implementation, beyond what theory alone can teach.',
+    solution:'A project-based learning implementation of a custom memory allocator in C, exploring low-level memory management concepts within an operating-systems context.',
+    features:['Custom memory allocation logic','Low-level C implementation','OS-concept driven design'],
+    stackList:['C','Operating Systems'],
+    challenges:'Details on specific implementation challenges are documented in the project repository.',
+    metrics:[],
+  }
+};
+
+function checkIcon(){
+  return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>';
+}
+
+function openProject(key){
+  const p = projects[key];
+  const metricsHtml = p.metrics.length ? `
+    <div class="detail-sec">
+      <h4>Performance & Impact</h4>
+      <div class="check-list">
+        ${p.metrics.map(m=>`<li><strong style="color:var(--text-0);">${m[0]}</strong>&nbsp;— ${m[1]}</li>`).join('')}
+      </div>
+    </div>` : '';
+  document.getElementById('detailCard').innerHTML = `
+    <div class="detail-head">
+      <div>
+        <div class="p-date">${p.duration} · ${p.status}</div>
+        <div class="p-title" style="font-size:24px;margin-top:6px;">${p.name}</div>
+        <div class="p-mono" style="margin-top:6px;color:var(--text-1);">${p.stack}</div>
+      </div>
+      <div class="detail-close" onclick="closeOverlay()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div style="display:flex;gap:10px;margin-bottom:30px;flex-wrap:wrap;">
+        <a class="btn btn-primary btn-sm" href="${p.github}" target="_blank" rel="noopener">GitHub Repository →</a>
+        ${p.demo ? `<a class="btn btn-outline btn-sm" href="${p.demo}" target="_blank" rel="noopener">Live Demo →</a>` : ''}
+      </div>
+      <div class="detail-sec">
+        <h4>Problem Statement</h4>
+        <p>${p.problem}</p>
+      </div>
+      <div class="detail-sec">
+        <h4>Solution</h4>
+        <p>${p.solution}</p>
+      </div>
+      <div class="detail-sec">
+        <h4>Features</h4>
+        <ul class="check-list">
+          ${p.features.map(f=>`<li>${checkIcon()}${f}</li>`).join('')}
+        </ul>
+      </div>
+      <div class="detail-sec">
+        <h4>Tech Stack</h4>
+        <div class="chip-row">${p.stackList.map(s=>`<span class="chip">${s}</span>`).join('')}</div>
+      </div>
+      <div class="detail-sec">
+        <h4>Challenges</h4>
+        <p>${p.challenges}</p>
+      </div>
+      ${metricsHtml}
+    </div>
+  `;
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeOverlay(){
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeOverlayBg(e){ if(e.target.id === 'overlay') closeOverlay(); }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeOverlay(); });
+
+/* ---------- Contact form ---------- */
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('name');
+  const email = document.getElementById('email');
+  const message = document.getElementById('message');
+  let valid = true;
+
+  toggleRow('row-name', name.value.trim().length > 1); 
+  toggleRow('row-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()));
+  toggleRow('row-message', message.value.trim().length > 4);
+
+  function toggleRow(id, ok){
+    const row = document.getElementById(id);
+    row.classList.toggle('invalid', !ok);
+    if(!ok) valid = false;
+  }
+  if(!valid) return;
+
+  const subject = encodeURIComponent('Portfolio contact from ' + name.value.trim());
+  const body = encodeURIComponent(message.value.trim() + '\n\n— ' + name.value.trim() + ' (' + email.value.trim() + ')');
+  window.location.href = `mailto:riyagarjola0@gmail.com?subject=${subject}&body=${body}`;
+  showToast('Opening your email client…');
+});
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
